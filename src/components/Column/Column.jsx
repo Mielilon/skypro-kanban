@@ -1,13 +1,20 @@
 import Card from "../Card/Card";
 
-export default function Column({ title }) {
+export default function Column({ title, cardList }) {
   return (
     <div className="main__column">
       <div className="column__title">
         <p>{title}</p>
       </div>
       <div className="cards">
-        <Card title={"Название задачи"} topic={"Research"} date={"30.10.23"} />
+        {cardList.map((card) => (
+          <Card
+            key={card.id}
+            title={card.title}
+            topic={card.topic}
+            date={card.date}
+          />
+        ))}
       </div>
     </div>
   );
