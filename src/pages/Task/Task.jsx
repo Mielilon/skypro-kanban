@@ -1,5 +1,5 @@
 import PopBrowse from "../../components/popups/PopBrowse/PopBrowse";
 
-export default function CardPage() {
+export default function TaskPage() {
   return <PopBrowse />;
 }

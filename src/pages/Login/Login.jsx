@@ -5,6 +5,7 @@ import * as S from "./Login.styled";
 import { useState } from "react";
 import { getAppendInputHandler } from "../../utils/getAppendInputHandler";
 import { signin } from "../../api/user";
+import useUser from "../../hooks/useUser";
 
 const inputs = [
   {
@@ -23,7 +24,8 @@ const inputs = [
   },
 ];
 
-export default function LoginPage({ setUser }) {
+export default function LoginPage() {
+  const { login: setUser } = useUser();
   const [loginData, setLoginData] = useState({
     login: "",
     password: "",

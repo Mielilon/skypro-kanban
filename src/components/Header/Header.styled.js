@@ -1,6 +1,7 @@
 // Header.styled.js
 import styled from "styled-components";
 import { hover01, hover02, headerUserArrow } from "../Common/Common.styled";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -41,7 +42,10 @@ const HeaderNav = styled.nav`
   justify-content: center;
 `;
 
-const HeaderButton = styled.button`
+const HeaderButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 178px;
   height: 30px;
   border-radius: 4px;

@@ -1,20 +1,20 @@
 import * as S from "./Column.styled";
 import Card from "../Card/Card";
 
-export default function Column({ title, cardList }) {
+export default function Column({ title, taskList }) {
   return (
     <S.MainColumn>
       <S.ColumnTitle>
         <S.TitleText>{title}</S.TitleText>
       </S.ColumnTitle>
       <S.CardsContainer>
-        {cardList.map((card) => (
+        {taskList.map((task) => (
           <Card
-            key={card._id}
-            title={card.title}
-            topic={card.topic}
-            date={card.date}
-            id={card._id}
+            key={task._id}
+            title={task.title}
+            topic={task.topic}
+            date={task.date}
+            id={task._id}
           />
         ))}
       </S.CardsContainer>
