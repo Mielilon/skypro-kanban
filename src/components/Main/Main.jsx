@@ -1,11 +1,13 @@
+import * as S from "./Main.styled";
+
 export default function Main({ children }) {
   return (
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">{children}</div>
-        </div>
-      </div>
-    </main>
+    <S.MainContainer>
+      <S.MainWrapper>
+        <S.MainBlock>
+          <S.MainContent>{children}</S.MainContent>
+        </S.MainBlock>
+      </S.MainWrapper>
+    </S.MainContainer>
   );
 }
