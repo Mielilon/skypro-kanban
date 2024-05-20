@@ -14,6 +14,7 @@ export default function Column({ title, cardList }) {
             title={card.title}
             topic={card.topic}
             date={card.date}
+            id={card.id}
           />
         ))}
       </S.CardsContainer>
