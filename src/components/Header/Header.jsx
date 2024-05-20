@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as S from "./Header.styled";
 import PopUser from "../popups/PopUser/PopUser";
 
-export default function Header({ addCard }) {
+export default function Header({ addCard, user }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ export default function Header({ addCard }) {
               Создать новую задачу
             </S.HeaderButton>
             <S.HeaderUser onClick={() => setIsOpen((prev) => !prev)}>
-              Ivan Ivanov
+              {user.name}
             </S.HeaderUser>
             {isOpen && <PopUser />}
           </S.HeaderNav>

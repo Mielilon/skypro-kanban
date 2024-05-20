@@ -10,11 +10,11 @@ export default function Column({ title, cardList }) {
       <S.CardsContainer>
         {cardList.map((card) => (
           <Card
-            key={card.id}
+            key={card._id}
             title={card.title}
             topic={card.topic}
             date={card.date}
-            id={card.id}
+            id={card._id}
           />
         ))}
       </S.CardsContainer>
