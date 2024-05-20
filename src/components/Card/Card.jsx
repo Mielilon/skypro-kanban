@@ -1,4 +1,5 @@
 import * as S from "./Card.styled";
+import { Link } from "react-router-dom";
 
 const themeColors = {
   "Web Design": "_orange",
@@ -7,7 +8,7 @@ const themeColors = {
   default: "_gray",
 };
 
-export default function Card({ topic, title, date }) {
+export default function Card({ topic, title, date, id }) {
   const color = themeColors[topic] || themeColors.default;
 
   return (
@@ -17,18 +18,18 @@ export default function Card({ topic, title, date }) {
           <S.CardTopic $topicColor={color}>
             <S.TopicText>{topic}</S.TopicText>
           </S.CardTopic>
-          <a href="#popBrowse" target="_self">
+          <Link to={`/card/${id}`}>
             <S.CardBtn>
               <div />
               <div />
               <div />
             </S.CardBtn>
-          </a>
+          </Link>
         </S.CardGroup>
         <S.CardContent>
-          <a href="" target="_blank">
+          <Link to={`/card/${id}`}>
             <S.CardTitle>{title}</S.CardTitle>
-          </a>
+          </Link>
           <S.CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"

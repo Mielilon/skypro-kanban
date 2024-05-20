@@ -1,15 +1,16 @@
+import { AppRoutes } from "../../../lib/appRoutes";
+import * as S from "./PopUser.styled";
+
 export default function PopUser() {
   return (
-    <div className="header__pop-user-set pop-user-set" id="user-set-target">
-      <p className="pop-user-set__name">Ivan Ivanov</p>
-      <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-      <div className="pop-user-set__theme">
+    <S.PopUserWrapper>
+      <S.UserName>Ivan Ivanov</S.UserName>
+      <S.UserEmail>ivan.ivanov@gmail.com</S.UserEmail>
+      <S.ThemeToggle>
         <p>Темная тема</p>
         <input type="checkbox" className="checkbox" name="checkbox" />
-      </div>
-      <button type="button" className="_hover03">
-        <a href="#popExit">Выйти</a>
-      </button>
-    </div>
+      </S.ThemeToggle>
+      <S.LogoutLink to={AppRoutes.EXIT}>Выйти</S.LogoutLink>
+    </S.PopUserWrapper>
   );
 }

@@ -1,13 +1,16 @@
+import { AppRoutes } from "../../../lib/appRoutes";
 import Calendar from "../../Calendar/Calendar";
+import { useParams, Link } from "react-router-dom";
 
 export default function PopBrowse() {
+  const { id } = useParams();
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи</h3>
+              <h3 className="pop-browse__ttl">Название задачи: {id}</h3>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -46,9 +49,8 @@ export default function PopBrowse() {
                     className="form-browse__area"
                     name="text"
                     id="textArea01"
-                    readOnly=""
+                    readOnly
                     placeholder="Введите описание задачи..."
-                    defaultValue={""}
                   />
                 </div>
               </form>
@@ -70,7 +72,7 @@ export default function PopBrowse() {
                 </button>
               </div>
               <button className="btn-browse__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
+                <Link to={AppRoutes.MAIN}>Закрыть</Link>
               </button>
             </div>
             <div className="pop-browse__btn-edit _hide">
@@ -89,7 +91,7 @@ export default function PopBrowse() {
                 </button>
               </div>
               <button className="btn-edit__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
+                <Link to={AppRoutes.MAIN}>Закрыть</Link>
               </button>
             </div>
           </div>
