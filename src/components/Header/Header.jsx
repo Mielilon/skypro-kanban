@@ -1,37 +1,28 @@
 import { useState } from "react";
+import * as S from "./Header.styled";
 import PopUser from "../popups/PopUser/PopUser";
 
 export default function Header({ addCard }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
-          <div className="header__logo _show _light">
-            <a href="" target="_self">
-              <img src="images/logo.png" alt="logo" />
-            </a>
-          </div>
-          <div className="header__logo _dark">
-            <a href="" target="_self">
-              <img src="images/logo_dark.png" alt="logo" />
-            </a>
-          </div>
-          <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" onClick={addCard}>
+    <S.HeaderContainer>
+      <S.HeaderWrapper>
+        <S.HeaderBlock>
+          <S.HeaderLogo>
+            <img src="images/logo.png" alt="logo" />
+          </S.HeaderLogo>
+          <S.HeaderNav>
+            <S.HeaderButton onClick={addCard}>
               Создать новую задачу
-            </button>
-            <span
-              onClick={() => setIsOpen((prev) => !prev)}
-              className="header__user _hover02"
-            >
+            </S.HeaderButton>
+            <S.HeaderUser onClick={() => setIsOpen((prev) => !prev)}>
               Ivan Ivanov
-            </span>
+            </S.HeaderUser>
             {isOpen && <PopUser />}
-          </nav>
-        </div>
-      </div>
-    </header>
+          </S.HeaderNav>
+        </S.HeaderBlock>
+      </S.HeaderWrapper>
+    </S.HeaderContainer>
   );
 }

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import Column from "./Column/Column";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import PopBrowse from "./popups/PopBrowse/PopBrowse";
+import PopExit from "./popups/PopExit/PopExit";
+import PopNewCard from "./popups/PopNewCard/PopNewCard";
+import { cardList } from "../data";
 import "./App.css";
-import Column from "./components/Column/Column";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import PopBrowse from "./components/popups/PopBrowse/PopBrowse";
-import PopExit from "./components/popups/PopExit/PopExit";
-import PopNewCard from "./components/popups/PopNewCard/PopNewCard";
-import { cardList } from "./data";
+import * as S from "./App.styled";
 
 const statusList = [
   "Без статуса",
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
+    <S.Wrapper>
       <PopExit />
       <PopBrowse />
       <PopNewCard />
@@ -47,7 +48,7 @@ function App() {
       <Header addCard={addCard} />
       <Main>
         {isLoading ? (
-          <div className="loading">Данные загружаются...</div>
+          <S.Loading>Данные загружаются...</S.Loading>
         ) : (
           statusList.map((status) => (
             <Column
@@ -58,7 +59,7 @@ function App() {
           ))
         )}
       </Main>
-    </div>
+    </S.Wrapper>
   );
 }
 
