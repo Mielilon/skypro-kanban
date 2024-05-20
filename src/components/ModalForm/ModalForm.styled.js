@@ -66,7 +66,8 @@ const ModalInput = styled.input`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: ${({ $isError }) =>
+    $isError ? "1px solid red" : "1px solid rgba(148, 166, 190, 0.4)"};
   outline: none;
   padding: 10px 8px;
   margin-bottom: 7px;
@@ -79,6 +80,15 @@ const ModalInput = styled.input`
     letter-spacing: -0.28px;
     color: #94a6be;
   }
+`;
+
+const ModalError = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #f84d4d;
 `;
 
 const ModalButton = styled.button`
@@ -112,6 +122,7 @@ export {
   ModalTitle,
   ModalFormStyled,
   ModalLabel,
+  ModalError,
   ModalInput,
   ModalButton,
 };

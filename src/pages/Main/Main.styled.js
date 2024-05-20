@@ -11,5 +11,9 @@ const Wrapper = styled.div`
 const Loading = styled.div`
   font-size: 18px;
 `;
+const Error = styled.div`
+  font-size: 18px;
+  color: #f84d4d;
+`;
 
-export { Wrapper, Loading };
+export { Wrapper, Loading, Error };

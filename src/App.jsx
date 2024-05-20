@@ -12,29 +12,25 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
-  const login = (e) => {
-    e.preventDefault();
-    setIsAuth(true);
-    navigate(AppRoutes.MAIN);
-  };
-
   const logout = (e) => {
-    console.log(1);
     e.preventDefault();
-    setIsAuth(false);
+    setUser(null);
     navigate(AppRoutes.LOGIN);
   };
 
   return (
     <Routes>
-      <Route path={AppRoutes.LOGIN} element={<LoginPage login={login} />} />
-      <Route path={AppRoutes.REGISTER} element={<RegistrationPage />} />
-      <Route element={<PrivateRoute isAuth={isAuth} />}>
-        <Route path={AppRoutes.MAIN} element={<MainPage />}>
+      <Route path={AppRoutes.LOGIN} element={<LoginPage setUser={setUser} />} />
+      <Route
+        path={AppRoutes.REGISTER}
+        element={<RegistrationPage setUser={setUser} />}
+      />
+      <Route element={<PrivateRoute user={user} />}>
+        <Route path={AppRoutes.MAIN} element={<MainPage user={user} />}>
           <Route path={AppRoutes.CARD} element={<CardPage />} />
           <Route path={AppRoutes.EXIT} element={<ExitPage logout={logout} />} />
         </Route>

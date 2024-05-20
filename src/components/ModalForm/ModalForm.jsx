@@ -5,7 +5,9 @@ export default function ModalForm({
   buttonText,
   buttonAction,
   inputs,
+  inputHandler,
   children,
+  error,
 }) {
   return (
     <S.Wrapper>
@@ -24,9 +26,12 @@ export default function ModalForm({
                     id={input.id}
                     placeholder={input.placeholder}
                     aria-label={input.ariaLabel}
+                    onChange={inputHandler}
+                    $isError={error}
                   />
                 </S.ModalLabel>
               ))}
+              {error && <S.ModalError>{error}</S.ModalError>}
               <S.ModalButton
                 onClick={buttonAction}
                 type="submit"
