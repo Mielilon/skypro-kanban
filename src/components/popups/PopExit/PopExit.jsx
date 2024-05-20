@@ -1,7 +1,9 @@
+import useUser from "../../../hooks/useUser";
 import { AppRoutes } from "../../../lib/appRoutes";
 import * as S from "./PopExit.styled";
 
-export default function PopExit({ logout }) {
+export default function PopExit() {
+  const { logout } = useUser();
   return (
     <S.PopExitWrapper>
       <S.PopExitContainer>

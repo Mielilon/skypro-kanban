@@ -1,8 +1,9 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import PopUser from "../popups/PopUser/PopUser";
+import { AppRoutes } from "../../lib/appRoutes";
 
-export default function Header({ addCard, user }) {
+export default function Header({ user }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -13,7 +14,7 @@ export default function Header({ addCard, user }) {
             <img src="images/logo.png" alt="logo" />
           </S.HeaderLogo>
           <S.HeaderNav>
-            <S.HeaderButton onClick={addCard}>
+            <S.HeaderButton to={AppRoutes.ADD_TASK}>
               Создать новую задачу
             </S.HeaderButton>
             <S.HeaderUser onClick={() => setIsOpen((prev) => !prev)}>

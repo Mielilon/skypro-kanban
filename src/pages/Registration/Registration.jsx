@@ -5,6 +5,7 @@ import * as S from "./Registration.styled";
 import { getAppendInputHandler } from "../../utils/getAppendInputHandler";
 import { signup } from "../../api/user";
 import { useState } from "react";
+import useUser from "../../hooks/useUser";
 
 const inputs = [
   {
@@ -30,7 +31,9 @@ const inputs = [
   },
 ];
 
-export default function RegistrationPage({ setUser }) {
+export default function RegistrationPage() {
+  const { login: setUser } = useUser();
+
   const [registerData, setRegisterData] = useState({
     name: "",
     login: "",
