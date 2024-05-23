@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { statusList } from "../../../lib/statusList";
 import * as S from "./PopBrowse.styled";
 import useTasks from "../../../hooks/useTasks";
-import { updateTask } from "../../../api/tasks";
+import { deleteTask, updateTask } from "../../../api/tasks";
 import { useNavigate } from "react-router-dom";
 import useUser from "../../../hooks/useUser";
 import Topic from "../../Topic/Topic";
@@ -24,7 +24,7 @@ export default function PopBrowse() {
     setTask(tasks.find((task) => task._id === id));
   }, [tasks, id]);
 
-  const saveTask = (e) => {
+  const updateTaskHandler = (e) => {
     e.preventDefault();
 
     if (!task.description || !task.date || !task.status) {
@@ -42,6 +42,16 @@ export default function PopBrowse() {
       });
   };
 
+  const deleteTaskHandler = () => {
+    deleteTask({ id: task._id, token: user.token })
+      .then((res) => {
+        setTasks(res.tasks);
+        navigate(AppRoutes.MAIN);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
   return (
     <S.PopBrowseContainer id="popBrowse">
       <S.PopBrowseBlock>
@@ -114,7 +124,7 @@ export default function PopBrowse() {
             <S.BtnGroup>
               {isEdit ? (
                 <>
-                  <S.BtnBg onClick={saveTask}>Сохранить</S.BtnBg>
+                  <S.BtnBg onClick={updateTaskHandler}>Сохранить</S.BtnBg>
                   <S.BtnEdit onClick={() => setIsEdit(false)}>
                     Отменить
                   </S.BtnEdit>
@@ -124,7 +134,9 @@ export default function PopBrowse() {
                   Редактировать задачу
                 </S.BtnEdit>
               )}
-              <S.BtnDelete>Удалить задачу</S.BtnDelete>
+              <S.BtnDelete onClick={deleteTaskHandler}>
+                Удалить задачу
+              </S.BtnDelete>
             </S.BtnGroup>
             <S.BtnClose>
               <Link to={AppRoutes.MAIN}>Закрыть</Link>
