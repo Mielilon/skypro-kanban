@@ -32,7 +32,7 @@ const addTask = async ({ task, token }) => {
 };
 
 const updateTask = async ({ task, token }) => {
-  const response = await fetch(apiURL + `/${task.id}`, {
+  const response = await fetch(apiURL + `/${task._id}`, {
     method: "PUT",
     body: JSON.stringify(task),
     headers: {

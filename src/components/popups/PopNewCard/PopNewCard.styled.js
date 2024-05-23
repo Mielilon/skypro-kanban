@@ -1,4 +1,4 @@
-// PopNewCard.styled.js
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const PopNewCardWrapper = styled.div`
@@ -49,7 +49,7 @@ const PopNewCardTitle = styled.h3`
   margin-bottom: 20px;
 `;
 
-const PopNewCardClose = styled.a`
+const PopNewCardClose = styled(Link)`
   position: absolute;
   top: 20px;
   right: 30px;
@@ -134,55 +134,6 @@ const PopNewCardCategories = styled.div`
   margin-bottom: 20px;
 `;
 
-const CategoriesTitle = styled.p`
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: 14px;
-`;
-
-const CategoriesThemes = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
-const CategoryTheme = styled.label`
-  display: inline-block;
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-  cursor: pointer;
-  background-color: ${(props) =>
-    props.color === "orange"
-      ? "#ffe4c2"
-      : props.color === "green"
-      ? "#b4fdd1"
-      : "#e9d4ff"};
-  color: ${(props) =>
-    props.color === "orange"
-      ? "#ff6d00"
-      : props.color === "green"
-      ? "#06b16e"
-      : "#9a48f1"};
-  opacity: ${(props) => (props.checked ? "1" : "0.4")};
-
-  input {
-    display: none;
-  }
-
-  p {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 14px;
-    white-space: nowrap;
-  }
-`;
-
 const CreateButton = styled.button`
   width: 132px;
   height: 30px;
@@ -222,8 +173,5 @@ export {
   FormNewArea,
   ErrorMessage,
   PopNewCardCategories,
-  CategoriesTitle,
-  CategoriesThemes,
-  CategoryTheme,
   CreateButton,
 };

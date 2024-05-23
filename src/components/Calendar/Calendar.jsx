@@ -22,7 +22,8 @@ function Calendar({ selected, setSelected }) {
     );
   }
   return (
-    <>
+    <S.CalendarWrap>
+      <S.CalendarLabel>Даты</S.CalendarLabel>
       <S.StyledCalendar>
         <DayPicker
           mode="single"
@@ -30,9 +31,10 @@ function Calendar({ selected, setSelected }) {
           onSelect={setSelected}
           footer={footer}
           locale={ru}
+          style={{ margin: "0px" }}
         />
       </S.StyledCalendar>
-    </>
+    </S.CalendarWrap>
   );
 }
 
