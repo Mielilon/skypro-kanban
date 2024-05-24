@@ -1,12 +1,12 @@
 // Header.styled.js
-import styled from "styled-components";
-import { hover01, hover02, headerUserArrow } from "../Common/Common.styled";
+import styled, { css } from "styled-components";
+import { hover01, hover02 } from "../Common/Common.styled";
 import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   width: 100%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
 `;
 
 const HeaderWrapper = styled.div`
@@ -49,8 +49,8 @@ const HeaderButton = styled(Link)`
   width: 178px;
   height: 30px;
   border-radius: 4px;
-  background-color: #565eef;
-  color: #ffffff;
+  background-color: ${({ theme }) => theme.primaryButtonColor};
+  color: #fff;
   border: none;
   font-size: 14px;
   line-height: 1;
@@ -59,6 +59,21 @@ const HeaderButton = styled(Link)`
   cursor: pointer;
   outline: none;
   ${hover01}
+`;
+
+const headerUserArrow = css`
+  &::after {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    border-left: 1.9px solid ${({ theme }) => theme.invertedTextColor};
+    border-bottom: 1.9px solid ${({ theme }) => theme.invertedTextColor};
+    transform: rotate(-45deg);
+    margin: -6px 0 0 5px;
+    padding: 0;
+  }
 `;
 
 const HeaderUser = styled.span`
@@ -70,7 +85,7 @@ const HeaderUser = styled.span`
   cursor: pointer;
   font-size: 14px;
   line-height: 20px;
-  color: #565eef;
+  color: ${({ theme }) => theme.invertedTextColor};
   ${hover02}
   ${headerUserArrow}
 `;

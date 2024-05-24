@@ -1,27 +1,33 @@
-const topicStyles = {
-  _purple: {
-    backgroundColor: "#e9d4ff",
-    color: "#9a48f1",
+const topicsData = [
+  {
+    name: "Web Design",
+    color: "_orange",
+    style: {
+      backgroundColor: "#ffe4c2",
+      color: "#ff6d00",
+    },
   },
-  _orange: {
-    backgroundColor: "#ffe4c2",
-    color: "#ff6d00",
+  {
+    name: "Research",
+    color: "_green",
+    style: {
+      backgroundColor: "#b4fdd1",
+      color: "#06b16e",
+    },
   },
-  _green: {
-    backgroundColor: "#b4fdd1",
-    color: "#06b16e",
+  {
+    name: "Copywriting",
+    color: "_purple",
+    style: {
+      backgroundColor: "#e9d4ff",
+      color: "#9a48f1",
+    },
   },
-  _gray: {
-    backgroundColor: "#94a6be",
-    color: "#ffffff",
-  },
+];
+
+const getTopicStyle = (topicName) => {
+  const topic = topicsData.find((t) => t.name === topicName);
+  return topic ? topic.style : { backgroundColor: "#b4fdd1", color: "#06b16e" };
 };
 
-const topicColors = {
-  "Web Design": "_orange",
-  Copywriting: "_purple",
-  Research: "_green",
-  default: "_gray",
-};
-
-export { topicStyles, topicColors };
+export { topicsData, getTopicStyle };

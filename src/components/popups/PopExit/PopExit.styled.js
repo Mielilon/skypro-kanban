@@ -28,12 +28,12 @@ const PopExitContainer = styled.div`
 const PopExitBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.secondaryBgColor};
   max-width: 370px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${(props) => props.theme.popupBorderColor};
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 `;
 
@@ -46,6 +46,7 @@ const PopExitTitle = styled.div`
     font-weight: 700;
     line-height: 30px;
     letter-spacing: -0.4px;
+    color: ${(props) => props.theme.primaryTextColor};
   }
 `;
 
@@ -88,7 +89,7 @@ const PopExitButtonNo = styled(Link)`
   height: 30px;
   background-color: transparent;
   border-radius: 4px;
-  border: 0.7px solid #565eef;
+  border: 0.7px solid ${(props) => props.theme.invertedTextColor};
   outline: none;
   display: flex;
   align-items: center;
@@ -97,12 +98,12 @@ const PopExitButtonNo = styled(Link)`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #565eef;
+  color: ${(props) => props.theme.invertedTextColor};
   text-decoration: none;
 
   &:hover {
-    background-color: #33399b;
-    color: #ffffff;
+    background-color: ${(props) => props.theme.invertedTextHoverColor};
+    color: ${(props) => props.theme.invertedTextColor};
   }
 `;
 

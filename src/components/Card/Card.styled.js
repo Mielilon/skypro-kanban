@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { topicStyles } from "../../lib/topic";
 
 const cardAnimation = keyframes`
   0% {
@@ -22,7 +21,7 @@ const CardItem = styled.div`
 const CardContainer = styled.div`
   width: 220px;
   height: 130px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -40,25 +39,6 @@ const CardGroup = styled.div`
   justify-content: space-between;
 `;
 
-const TopicText = styled.p`
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 10px;
-`;
-
-const CardTopic = styled.div`
-  width: auto;
-  height: 20px;
-  padding: 5px 14px;
-  border-radius: 18px;
-  background-color: ${({ $topicColor }) =>
-    topicStyles[$topicColor]?.backgroundColor || "#b4fdd1"};
-
-  ${TopicText} {
-    color: ${({ $topicColor }) => topicStyles[$topicColor]?.color || "#06b16e"};
-  }
-`;
-
 const CardBtn = styled.div`
   width: 24px;
   height: 24px;
@@ -71,7 +51,7 @@ const CardBtn = styled.div`
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: #94a6be;
+    background-color: ${({ theme }) => theme.secondaryTextColor};
   }
 `;
 
@@ -87,7 +67,7 @@ const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: #000000;
+  color: ${({ theme }) => theme.primaryTextColor};
   margin-bottom: 10px;
 `;
 
@@ -113,8 +93,6 @@ export {
   CardItem,
   CardContainer,
   CardGroup,
-  TopicText,
-  CardTopic,
   CardBtn,
   CardContent,
   CardTitle,

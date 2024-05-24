@@ -17,7 +17,7 @@ const ColumnTitle = styled.div`
 `;
 
 const TitleText = styled.p`
-  color: #94a6be;
+  color: ${({ theme }) => theme.secondaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;

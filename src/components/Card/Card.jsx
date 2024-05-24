@@ -1,19 +1,15 @@
-import { topicColors } from "../../lib/topic";
 import * as S from "./Card.styled";
 import { ru } from "date-fns/locale";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import Topic from "../Topic/Topic";
 
 export default function Card({ topic, title, date, id }) {
-  const color = topicColors[topic] || topicColors.default;
-
   return (
     <S.CardItem>
       <S.CardContainer>
         <S.CardGroup>
-          <S.CardTopic $topicColor={color}>
-            <S.TopicText>{topic}</S.TopicText>
-          </S.CardTopic>
+          <Topic topic={topic} />
           <Link to={`/task/${id}`}>
             <S.CardBtn>
               <div />

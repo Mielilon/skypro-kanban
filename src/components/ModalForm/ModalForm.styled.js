@@ -1,4 +1,3 @@
-// ModalForm.styled.js
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -6,7 +5,7 @@ const Wrapper = styled.div`
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: #eaeef6;
+  background-color: ${({ theme }) => theme.primaryBgColor};
 `;
 
 const ContainerSignup = styled.div`
@@ -30,13 +29,13 @@ const Modal = styled.div`
 const ModalBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
   max-width: 368px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
-  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  border: 0.7px solid ${({ theme }) => theme.inputBorderColor};
+  box-shadow: 0px 4px 67px -12px ${({ theme }) => theme.shadowColor};
 `;
 
 const ModalTitle = styled.div`
@@ -47,6 +46,7 @@ const ModalTitle = styled.div`
     line-height: 30px;
     letter-spacing: -0.6px;
     margin-bottom: 20px;
+    color: ${({ theme }) => theme.primaryTextColor};
   }
 `;
 
@@ -66,8 +66,7 @@ const ModalInput = styled.input`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: ${({ $isError }) =>
-    $isError ? "1px solid red" : "1px solid rgba(148, 166, 190, 0.4)"};
+  border: ${({ theme }) => `1px solid ${theme.popupBorderColor}`};
   outline: none;
   padding: 10px 8px;
   margin-bottom: 7px;
@@ -78,7 +77,7 @@ const ModalInput = styled.input`
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.28px;
-    color: #94a6be;
+    color: ${({ theme }) => theme.inputPlaceholderColor};
   }
 `;
 
@@ -88,13 +87,13 @@ const ModalError = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
-  color: #f84d4d;
+  color: ${({ theme }) => theme.errorColor};
 `;
 
 const ModalButton = styled.button`
   width: 100%;
   height: 30px;
-  background-color: #565eef;
+  background-color: ${({ theme }) => theme.primaryButtonColor};
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -107,10 +106,10 @@ const ModalButton = styled.button`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.secondaryButtonColor};
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${({ theme }) => theme.hoverButtonColor};
   }
 `;
 

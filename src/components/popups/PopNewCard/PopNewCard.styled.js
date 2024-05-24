@@ -1,4 +1,4 @@
-// PopNewCard.styled.js
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const PopNewCardWrapper = styled.div`
@@ -27,12 +27,12 @@ const PopNewCardContainer = styled.div`
 const PopNewCardBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
   max-width: 730px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${({ theme }) => theme.popupBorderColor};
   position: relative;
 `;
 
@@ -42,23 +42,23 @@ const PopNewCardContent = styled.div`
 `;
 
 const PopNewCardTitle = styled.h3`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
   margin-bottom: 20px;
 `;
 
-const PopNewCardClose = styled.a`
+const PopNewCardClose = styled(Link)`
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #94a6be;
+  color: ${({ theme }) => theme.checkboxControl};
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: #000000;
+    color: ${({ theme }) => theme.primaryTextColor};
   }
 `;
 
@@ -81,7 +81,7 @@ const FormNewBlock = styled.div`
 `;
 
 const SubTitle = styled.label`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -93,18 +93,18 @@ const FormNewInput = styled.input`
   outline: none;
   padding: 14px;
   background: transparent;
-  border: ${({ $isError }) =>
-    $isError ? "1px solid #F84D4D" : "1px solid rgba(148, 166, 190, 0.4)"};
+  border: ${({ theme }) => `1px solid ${theme.inputBorderColor}`};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
   margin-bottom: 20px;
+  color: ${({ theme }) => theme.primaryTextColor};
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: ${({ $isError }) => ($isError ? "#F84D4D" : "#94A6BE")};
+    color: ${({ theme }) => theme.secondaryTextColor};
     letter-spacing: -0.14px;
   }
 `;
@@ -114,8 +114,8 @@ const FormNewArea = styled.textarea`
   outline: none;
   padding: 14px;
   background: transparent;
-  border: ${({ $isError }) =>
-    $isError ? "1px solid #F84D4D" : "1px solid rgba(148, 166, 190, 0.4)"};
+  color: ${({ theme }) => theme.primaryTextColor};
+  border: ${({ theme }) => `1px solid ${theme.inputBorderColor}`};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
@@ -125,7 +125,7 @@ const FormNewArea = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: ${({ $isError }) => ($isError ? "#F84D4D" : "#94A6BE")};
+    color: ${({ theme }) => theme.secondaryTextColor};
     letter-spacing: -0.14px;
   }
 `;
@@ -134,75 +134,26 @@ const PopNewCardCategories = styled.div`
   margin-bottom: 20px;
 `;
 
-const CategoriesTitle = styled.p`
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: 14px;
-`;
-
-const CategoriesThemes = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
-const CategoryTheme = styled.label`
-  display: inline-block;
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-  cursor: pointer;
-  background-color: ${(props) =>
-    props.color === "orange"
-      ? "#ffe4c2"
-      : props.color === "green"
-      ? "#b4fdd1"
-      : "#e9d4ff"};
-  color: ${(props) =>
-    props.color === "orange"
-      ? "#ff6d00"
-      : props.color === "green"
-      ? "#06b16e"
-      : "#9a48f1"};
-  opacity: ${(props) => (props.checked ? "1" : "0.4")};
-
-  input {
-    display: none;
-  }
-
-  p {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 14px;
-    white-space: nowrap;
-  }
-`;
-
 const CreateButton = styled.button`
   width: 132px;
   height: 30px;
-  background-color: #565eef;
+  background-color: ${({ theme }) => theme.primaryButtonColor};
   border-radius: 4px;
   border: 0;
   outline: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: #ffffff;
+  color: ${({ theme }) => theme.secondaryButtonColor};
   cursor: pointer;
   float: right;
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${({ theme }) => theme.hoverButtonColor};
   }
 `;
 const ErrorMessage = styled.p`
-  color: #f84d4d;
+  color: ${({ theme }) => theme.errorColor};
   font-size: 14px;
   margin-top: 10px;
 `;
@@ -222,8 +173,5 @@ export {
   FormNewArea,
   ErrorMessage,
   PopNewCardCategories,
-  CategoriesTitle,
-  CategoriesThemes,
-  CategoryTheme,
   CreateButton,
 };

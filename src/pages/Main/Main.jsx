@@ -7,14 +7,7 @@ import * as S from "./Main.styled";
 import { getTasks } from "../../api/tasks";
 import useUser from "../../hooks/useUser";
 import useTasks from "../../hooks/useTasks";
-
-const statusList = [
-  "Без статуса",
-  "Нужно сделать",
-  "В работе",
-  "Тестирование",
-  "Готово",
-];
+import { statusList } from "../../lib/statusList";
 
 export default function MainPage() {
   const { user } = useUser();

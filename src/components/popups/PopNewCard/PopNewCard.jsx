@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Calendar from "../../Calendar/Calendar";
 import * as S from "./PopNewCard.styled";
 import { addTask } from "../../../api/tasks";
@@ -6,12 +6,7 @@ import useUser from "../../../hooks/useUser";
 import useTasks from "../../../hooks/useTasks";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../lib/appRoutes";
-
-const topics = [
-  { name: "Web Design", color: "orange" },
-  { name: "Research", color: "green" },
-  { name: "Copywriting", color: "purple" },
-];
+import CategorySelector from "../../CategorySelector/CategorySelector";
 
 export default function PopNewCard() {
   const { user } = useUser();
@@ -42,7 +37,7 @@ export default function PopNewCard() {
         setTasks(res.tasks);
         navigate(AppRoutes.MAIN);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Что-то пошло не так. Попробуйте еще раз");
       });
   };
@@ -53,7 +48,7 @@ export default function PopNewCard() {
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
             <S.PopNewCardTitle>Создание задачи</S.PopNewCardTitle>
-            <S.PopNewCardClose href="#">✖</S.PopNewCardClose>
+            <S.PopNewCardClose to={AppRoutes.MAIN}>✖</S.PopNewCardClose>
             <S.PopNewCardWrap>
               <S.PopNewCardForm id="formNewCard" action="#">
                 <S.FormNewBlock>
@@ -86,27 +81,12 @@ export default function PopNewCard() {
                 setSelected={(date) => setTask({ ...task, date })}
               />
             </S.PopNewCardWrap>
-            <S.PopNewCardCategories>
-              <S.CategoriesTitle>Категория</S.CategoriesTitle>
-              <S.CategoriesThemes>
-                {topics.map((topic) => (
-                  <S.CategoryTheme
-                    key={topic.name}
-                    color={topic.color}
-                    checked={task.topic === topic.name}
-                  >
-                    <input
-                      type="radio"
-                      name="topic"
-                      value={topic.name}
-                      checked={task.topic === topic.name}
-                      onChange={() => setTask({ ...task, topic: topic.name })}
-                    />
-                    <p>{topic.name}</p>
-                  </S.CategoryTheme>
-                ))}
-              </S.CategoriesThemes>
-            </S.PopNewCardCategories>
+            <CategorySelector
+              selectedCategory={task.topic}
+              onCategoryChange={(elem) => {
+                setTask({ ...task, topic: elem });
+              }}
+            />
             {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.CreateButton onClick={createTask}>Создать задачу</S.CreateButton>
           </S.PopNewCardContent>
