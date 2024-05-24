@@ -5,7 +5,7 @@ const CategorySelectorContainer = styled.div`
 `;
 
 const CategoriesTitle = styled.p`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -27,8 +27,10 @@ const CategoryTheme = styled.label`
   border-radius: 24px;
   margin-right: 7px;
   cursor: pointer;
-  background-color: ${({ $style }) => $style.backgroundColor};
-  color: ${({ $style }) => $style.color};
+  background-color: ${({ $style, $theme }) =>
+    $theme === "light" ? $style.backgroundColor : $style.color};
+  color: ${({ $style, $theme }) =>
+    $theme === "light" ? $style.color : $style.backgroundColor};
   opacity: ${({ checked }) => (checked ? "1" : "0.4")};
 
   input {

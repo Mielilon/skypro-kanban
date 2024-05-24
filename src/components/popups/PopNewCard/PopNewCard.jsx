@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Calendar from "../../Calendar/Calendar";
 import * as S from "./PopNewCard.styled";
 import { addTask } from "../../../api/tasks";
@@ -37,7 +37,7 @@ export default function PopNewCard() {
         setTasks(res.tasks);
         navigate(AppRoutes.MAIN);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Что-то пошло не так. Попробуйте еще раз");
       });
   };

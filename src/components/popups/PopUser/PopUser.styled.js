@@ -1,7 +1,5 @@
-// PopUser.styled.js
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { hover01 } from "../../Common/Common.styled";
 
 const PopUserWrapper = styled.div`
   position: absolute;
@@ -10,8 +8,8 @@ const PopUserWrapper = styled.div`
   width: 213px;
   height: 205px;
   border-radius: 10px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  background: #fff;
+  border: 0.7px solid ${({ theme }) => theme.popupBorderColor};
+  background: ${({ theme }) => theme.secondaryBgColor};
   box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
   padding: 34px;
   text-align: center;
@@ -19,7 +17,7 @@ const PopUserWrapper = styled.div`
 `;
 
 const UserName = styled.p`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -28,7 +26,7 @@ const UserName = styled.p`
 `;
 
 const UserEmail = styled.p`
-  color: #94a6be;
+  color: ${({ theme }) => theme.secondaryTextColor};
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.14px;
@@ -42,7 +40,7 @@ const ThemeToggle = styled.div`
   margin-bottom: 30px;
 
   p {
-    color: #000;
+    color: ${({ theme }) => theme.primaryTextColor};
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.14px;
@@ -67,7 +65,7 @@ const ThemeToggle = styled.div`
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      background-color: #94a6be;
+      background-color: ${({ theme }) => theme.checkboxControl};
       transition: 0.5s;
     }
 
@@ -80,16 +78,16 @@ const ThemeToggle = styled.div`
 const LogoutLink = styled(Link)`
   padding: 8px 14px;
   border-radius: 4px;
-  border: 1px solid #565eef;
-  color: #565eef;
+  border: 1px solid ${({ theme }) => theme.invertedTextColor};
+  color: ${({ theme }) => theme.invertedTextColor};
   font-size: 14px;
   line-height: 1;
   font-weight: 500;
   cursor: pointer;
   outline: none;
   &:hover {
-    color: #fff;
-    background-color: #565eef;
+    color: ${({ theme }) => theme.invertedTextHoverColor};
+    background-color: ${({ theme }) => theme.invertedTextColor};
   }
 `;
 

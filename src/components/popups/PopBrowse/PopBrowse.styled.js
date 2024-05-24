@@ -18,12 +18,12 @@ const PopBrowseContainer = styled.div`
 const PopBrowseBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
   max-width: 730px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${({ theme }) => theme.inputBorderColor};
   position: relative;
 `;
 
@@ -40,7 +40,7 @@ const PopBrowseTopBlock = styled.div`
 `;
 
 const PopBrowseTitle = styled.h3`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -69,25 +69,27 @@ const TextArea = styled.textarea`
   width: 100%;
   outline: none;
   padding: 14px;
-  background: #eaeef6;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  background: ${({ theme }) => theme.primaryBgColor};
+  border: 0.7px solid ${({ theme }) => theme.popupBorderColor};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
   margin-top: 14px;
   height: 280px;
-  ::placeholder {
+  resize: none;
+  color: ${({ theme }) => theme.primaryTextColor};
+  &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${({ theme }) => theme.inputPlaceholderColor};
     letter-spacing: -0.14px;
   }
 `;
 
 const PopBrowseError = styled.p`
-  color: red;
+  color: ${({ theme }) => theme.errorColor};
 `;
 
 const PopBrowseBtnBrowse = styled.div`
@@ -100,7 +102,7 @@ const PopBrowseBtnBrowse = styled.div`
     margin-bottom: 10px;
     padding: 0 14px;
     &:hover {
-      background-color: #33399b;
+      background-color: ${({ theme }) => theme.hoverButtonColor};
     }
   }
 `;
@@ -114,35 +116,35 @@ const BtnGroup = styled.div`
 
 const BtnEdit = styled.button`
   border-radius: 4px;
-  border: 0.7px solid #565eef;
+  border: 0.7px solid ${({ theme }) => theme.primaryButtonColor};
   background: transparent;
-  color: #565eef;
+  color: ${({ theme }) => theme.primaryButtonColor};
   &:hover {
-    background-color: #33399b;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.hoverButtonColor};
+    color: ${({ theme }) => theme.invertedTextHoverColor};
   }
 `;
 
 const BtnBg = styled.button`
   border-radius: 4px;
-  background: #565eef;
+  background: ${({ theme }) => theme.primaryButtonColor};
   border: none;
-  color: #ffffff;
+  color: ${({ theme }) => theme.secondaryButtonColor};
   &:hover {
-    background-color: #33399b;
+    background-color: ${({ theme }) => theme.hoverButtonColor};
   }
 `;
 
 const BtnClose = styled(BtnBg)`
   a {
-    color: #ffffff;
+    color: ${({ theme }) => theme.secondaryButtonColor};
     text-decoration: none;
   }
 `;
 
 const BtnDelete = styled(BtnEdit)`
   a {
-    color: #565eef;
+    color: ${({ theme }) => theme.primaryButtonColor};
     text-decoration: none;
   }
 `;
@@ -170,14 +172,14 @@ const ThemeDownCategories = styled.div`
 
 const CategoriesP = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
 `;
 
 const StatusLabel = styled.p`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -199,10 +201,13 @@ const StatusTheme = styled.label`
   border-radius: 24px;
   margin-right: 7px;
   cursor: pointer;
-  background-color: ${({ $isChecked }) => ($isChecked ? "#94A6BE" : "#fff")};
+  background-color: ${({ $isChecked, theme }) =>
+    $isChecked ? theme.checkboxControl : theme.secondaryBgColor};
   border: 0.7px solid
-    ${({ $isChecked }) => ($isChecked ? "#94A6BE" : "#94A6BE")};
-  color: ${({ $isChecked }) => ($isChecked ? "#fff" : "#94A6BE")};
+    ${({ $isChecked, theme }) =>
+      $isChecked ? theme.checkboxControl : theme.checkboxControl};
+  color: ${({ $isChecked, theme }) =>
+    $isChecked ? theme.secondaryButtonColor : theme.secondaryTextColor};
 
   input {
     display: none;

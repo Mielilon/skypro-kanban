@@ -1,11 +1,12 @@
-import React from "react";
 import * as S from "./CategorySelector.styled";
 import { getTopicStyle, topicsData } from "../../lib/topic";
+import useTheme from "../../hooks/useTheme";
 
 export default function CategorySelector({
   selectedCategory,
   onCategoryChange,
 }) {
+  const { theme } = useTheme();
   return (
     <S.CategorySelectorContainer>
       <S.CategoriesTitle>Категория</S.CategoriesTitle>
@@ -14,6 +15,7 @@ export default function CategorySelector({
           <S.CategoryTheme
             key={category.name}
             $style={getTopicStyle(category.name)}
+            $theme={theme}
             checked={selectedCategory === category.name}
           >
             <input

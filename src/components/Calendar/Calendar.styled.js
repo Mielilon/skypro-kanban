@@ -32,7 +32,7 @@ const CalendarWrap = styled.div`
 `;
 
 const CalendarLabel = styled.p`
-  color: #000;
+  color: ${({ theme }) => theme.primaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;

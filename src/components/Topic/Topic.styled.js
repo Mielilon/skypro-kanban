@@ -9,10 +9,12 @@ const CardTopic = styled.div`
   height: ${({ $size }) => ($size === "big" ? "30px" : "20px")};
   padding: ${({ $size }) => ($size === "big" ? "8px 20px" : "5px 14px")};
   border-radius: 18px;
-  background-color: ${({ $topicStyle }) => $topicStyle.backgroundColor};
+  background-color: ${({ $topicStyle, $theme }) =>
+    $theme === "light" ? $topicStyle.backgroundColor : $topicStyle.color};
 
   ${TopicText} {
-    color: ${({ $topicStyle }) => $topicStyle.color};
+    color: ${({ $topicStyle, $theme }) =>
+      $theme === "light" ? $topicStyle.color : $topicStyle.backgroundColor};
     font-size: ${({ $size }) => ($size === "big" ? "14px" : "10px")};
     line-height: ${({ $size }) => ($size === "big" ? "14px" : "10px")};
   }
